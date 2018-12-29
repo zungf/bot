@@ -2574,6 +2574,42 @@ if (message.content.startsWith(adminprefix + 't')) {
 
 
 
+client.on("message", message => {//Toxic Codes
+        var prefix = "$";// البرفكس
+    if(message.content.startsWith(prefix + "setwlc")) {//Toxic Codes
+        let args = message.mentions.channels.first();
+            if(!args) message.channel.send("** منشن روم . ❌**").then(m => { //Toxic Codes   
+m.delete(1500);
+})
+                if(!message.guild.member(message.author.id).hasPermission("MANAGE_CHANNELS")) return message.channel.send("**ليس لديك صلاحيات . ❌**");
+                        message.channel.send(`**${args}. لقد تم شغل الروم هذا للترحيب.**`);//Toxic Codes
+                    client.on("guildMemberAdd", (member) => {//Toxic Codes
+                            if(member.user.bot) return;//Toxic Codes
+                         var embed = new Discord.RichEmbed()//Toxic Codes
+    .setAuthor(member.user.username, member.user.avatarURL)//Toxic Codes
+    .setThumbnail(member.user.avatarURL)//Toxic Codes
+    .setTitle('New Member')
+    .setDescription('Welcome To Server')//Toxic Codes
+    .addField('**ID Member:',"" +  member.user.id, true)//Toxic Codes
+    .addField('**Tage Member:', member.user.discriminator, true)//Toxic Codes
+    .addField('Created At Member', member.user.createdAt, true)//Toxic Codes
+    .addField(' 👤  Your Number',`**[ ${member.guild.memberCount} ]**`,true)//Toxic Codes
+    .setColor('GREEN')
+    .setFooter(member.guild.name, member.guild.iconURL, true)
+                         
+   args.send({embed : embed});//Toxic Codes
+                    });
+    }
+});
+
+
+
+
+
+
+
+
+
 
 
 
